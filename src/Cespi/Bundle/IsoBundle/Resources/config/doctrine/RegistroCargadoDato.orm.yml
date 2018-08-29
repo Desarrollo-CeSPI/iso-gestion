@@ -1,0 +1,62 @@
+Cespi\Bundle\IsoBundle\Entity\RegistroCargadoDato:
+    type: entity
+    repositoryClass: Cespi\Bundle\IsoBundle\Entity\RegistroCargadoDatoRepository
+    table: registro_cargado_dato
+    indexes:
+        id_registro_cargado:
+            columns:
+                - id_registro_cargado
+        id_registro_campo:
+            columns:
+                - id_registro_campo
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dato:
+            type: text
+            nullable: false
+            length: null
+            fixed: false
+            comment: ''
+        user:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        createdAt:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: created_at
+        control_envio_email:
+            type: boolean
+            nullable: true
+            comment: ''
+    manyToOne:
+        idRegistroCampo:
+            targetEntity: RegistroCampos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_registro_campo:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idRegistroCargado:
+            targetEntity: RegistroCargado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_registro_cargado:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

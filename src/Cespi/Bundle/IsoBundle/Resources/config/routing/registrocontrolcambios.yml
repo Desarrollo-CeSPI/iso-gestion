@@ -1,0 +1,30 @@
+registrocontrolcambios:
+    pattern:  /
+    defaults: { _controller: "CespiIsoBundle:RegistroControlCambios:index" }
+
+registrocontrolcambios_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CespiIsoBundle:RegistroControlCambios:show" }
+
+registrocontrolcambios_new:
+    pattern:  /{idRegistro}/new
+    defaults: { _controller: "CespiIsoBundle:RegistroControlCambios:new" }
+
+registrocontrolcambios_create:
+    pattern:  /create
+    defaults: { _controller: "CespiIsoBundle:RegistroControlCambios:create" }
+    requirements: { _method: post }
+
+registrocontrolcambios_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CespiIsoBundle:RegistroControlCambios:edit" }
+
+registrocontrolcambios_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CespiIsoBundle:RegistroControlCambios:update" }
+    requirements: { _method: post|put }
+
+registrocontrolcambios_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CespiIsoBundle:RegistroControlCambios:delete" }
+    requirements: { _method: post|delete }

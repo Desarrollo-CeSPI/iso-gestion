@@ -1,0 +1,72 @@
+Cespi\Bundle\IsoBundle\Entity\Usuarios:
+    type: entity
+    repositoryClass: Cespi\Bundle\IsoBundle\Entity\UsuariosRepository
+    table: usuarios
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        apellido:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        nombre:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        nroDocumento:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: nro_documento
+        email:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+        perfil:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+        password:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+            default: '123456'
+    manyToMany:
+        alcances:
+          targetEntity: Alcances
+          joinTable:
+            name: usuarios_alcance
+            joinColumns:
+              usuario_id:
+                referencedColumnName: id
+            inverseJoinColumns:
+              alcance_id:
+                referencedColumnName: id
+                unique: true            
+                
+    lifecycleCallbacks: {  }

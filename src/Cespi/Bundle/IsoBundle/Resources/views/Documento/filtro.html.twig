@@ -1,0 +1,19 @@
+<div class="well pull-left">
+    <form action="{{ path("documento") }}" method="post" class="form-inline">
+        <label for="idTipoDocumento">Tipo</label>
+        <select id="idTipoDocumento" name="idTipoDocumento" class="form-control">
+            {% for tipo in tipos_documento %}
+                <option {% if tipo.id == filtros[0] %}  selected="selected" {% endif %} value="{{tipo.id}}">{{ tipo.nombre }}</option>
+            {% endfor %}
+                <option {% if 0 == filtros[0] %}  selected="selected" {% endif %} value="0">- Todos -</option>
+        </select>
+        <label for="idEstadoDocumento">Estado</label> 
+        <select id="idEstadoDocumento" name="idEstadoDocumento" class="form-control">
+            {% for estado in estados_documento %}
+                <option {% if estado.id == filtros[1] %} selected="selected" {% endif %} value="{{estado.id}}">{{ estado.nombre }}</option>
+            {% endfor %}
+                <option {% if 0 == filtros[1] %} selected="selected" {% endif %} value="0">- Todos -</option>
+        </select>
+        <button type="submit" class="btn btn-default">Filtrar</button>
+    </form>
+</div>

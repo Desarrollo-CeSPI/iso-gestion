@@ -1,0 +1,154 @@
+Cespi\Bundle\IsoBundle\Entity\Documento:
+    type: entity
+    repositoryClass: Cespi\Bundle\IsoBundle\Entity\DocumentoRepository
+    table: documento
+    indexes:
+        estado:
+            columns:
+                - estado
+        tipo:
+            columns:
+                - tipo
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: ''
+        ruta:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        revision:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        fechaAprobado:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: fecha_aprobado
+        fechaRevision:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: fecha_revision
+        fechaCreacion:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: fecha_creacion
+        fechaVigencia:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: fecha_vigencia
+        descripcion:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+    manyToOne:
+        estado:
+            targetEntity: Estado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                estado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        editor:
+            targetEntity: Usuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo:
+                    referencedColumnName: id
+            orphanRemoval: false                
+        revisor:
+            targetEntity: Usuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo:
+                    referencedColumnName: id
+            orphanRemoval: false            
+
+        audiencia:
+            targetEntity: Usuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo:
+                    referencedColumnName: id
+            orphanRemoval: false                                    
+        
+        responsable:
+            targetEntity: Usuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo:
+                    referencedColumnName: id
+            orphanRemoval: false                                    
+        
+        aprobador:
+            targetEntity: Usuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo:
+                    referencedColumnName: id
+            orphanRemoval: false    
+            
+    
+        # esto es lo mas sucio que hice en mi vida mas o menos...
+        # a todos los campos agregados le puse como joinColums 'tipo'
+        # y movi el campo tipo al final entonces toma el ultimo valor
+        # si no intentaba insertar los campos aprobador, responsable etc
+        # que no existen en la tabla, son campos 'virtuales'  saludos.
+        tipo:
+            targetEntity: TipoDocumento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo:
+                    referencedColumnName: id
+            orphanRemoval: false  
+            
+        
+    manyToMany:
+        alcances:
+          targetEntity: Alcances
+          joinTable:
+            name: documento_alcance
+            joinColumns:
+              documento_id:
+                referencedColumnName: id
+            inverseJoinColumns:
+              alcance_id:
+                referencedColumnName: id
+                unique: true            
+            
+    lifecycleCallbacks: {  }

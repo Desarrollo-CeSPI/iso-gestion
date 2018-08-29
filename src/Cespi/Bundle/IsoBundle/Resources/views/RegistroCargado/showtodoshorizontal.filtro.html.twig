@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+   {% include 'CespiIsoBundle:RegistroCargado:encabezado.html.twig' %}
+    
+    
+    
+      <table class="table table-bordered table-condensed" style="">
+        <tbody>
+        <tr class="info">
+                {#
+                <th class="col-md-0">Id</th>
+                <th class="col-md-0">Fecha de Carga</th>
+                #}
+                {% for campo in campos %}
+                    <th class="td col-sm-2">{{ campo.nombre }}</th>
+                {% endfor %}
+                <th>Acciones</th>
+        </tr>
+        {% for entity in entities %}
+                      
+            <tr>
+                {#
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.createdAt|date('d/m/Y H:i:s') }}
+                
+                {#
+                {% for dato in datos[entity.id] |sort %}
+                #}
+                {% for dato in datos[entity.id] %}
+                <td class="">{{ dato.dato | converturls }}</td>
+                {% endfor %}
+                <td><div class="pull-right">
+                    <a href="{{ path('registro_edit_cargado', { 'id': entity.id, 'vista': posicion }) }}"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
+                </div>
+                </td>
+            </tr>
+
+    {% endfor %}
+
+       </tbody>
+    </table>
+
+    <ul class="record_actions">
+	    <li>
+	        <a  class="btn btn-default btn-sm"  href="{{ path('registrocargado_todos',   {'id': registro.id} ) }}">
+	            <span class="glyphicon glyphicon-chevron-left"></span>  Volver al Listado
+	        </a>
+	    </li>
+            <li>
+                
+            </li>
+	    
+    </ul>
+{% endblock %}

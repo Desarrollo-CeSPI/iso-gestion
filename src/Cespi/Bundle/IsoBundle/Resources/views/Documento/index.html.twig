@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Documentos de gesti&oacute;n de calidad</h1>
+    {% include 'CespiIsoBundle:Documento:operaciones.html.twig'%}
+    <br>
+    {% include 'CespiIsoBundle:Documento:filtro.html.twig'%}
+    <table class="records_list table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Revision</th>
+                <th>Fecha Creación</th>
+                <th>Fecha Aprobación</th>
+                <th>Fecha Revisión</th>
+                <th>Fecha Vigencia</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('documento_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.tipo }}</td>
+                <td>{{ entity.revision }}</td>
+                <td>{% if entity.fechaCreacion %}{{ entity.fechaCreacion|date('d/m/Y') }}{% endif %}</td>
+                <td>{% if entity.fechaAprobado %}{{ entity.fechaAprobado|date('d/m/Y') }}{% endif %}</td>
+                <td>{% if entity.fechaRevision %}{{ entity.fechaRevision|date('d/m/Y') }}{% endif %}</td>
+                <td>{% if entity.fechaVigencia %}{{ entity.fechaVigencia|date('d/m/Y') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('documento_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-zoom-in"></span>Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('documento_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
+                    </li>
+                    <!--<li>
+                        <a href="{{ path('documento_delete', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
+                    </li>-->
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    {% include 'CespiIsoBundle:Documento:operaciones.html.twig'%}
+      
+    {% endblock %}

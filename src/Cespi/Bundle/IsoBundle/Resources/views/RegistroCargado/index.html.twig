@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>{{ registro  }}</h1>
+
+     <table class="records_list table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha de carga</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody> 
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('registrocargado_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.createdAt %}{{ entity.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('registrocargado_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-zoom-in"></span> Ver</a>
+						  </li>
+
+						  <li>                    
+                        <a href="{{ path('registro_edit_cargado', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  
+    <ul class="record_actions">
+    <li>
+        <a class="btn btn-default btn-sm" href="{{ path('cargar_registros') }}">
+            <span class="glyphicon glyphicon-chevron-left"></span> Volver al listado
+        </a>
+    </li>
+	</ul>
+
+    {% endblock %}

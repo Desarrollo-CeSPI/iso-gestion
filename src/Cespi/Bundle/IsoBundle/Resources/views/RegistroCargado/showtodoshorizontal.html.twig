@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {% include 'CespiIsoBundle:RegistroCargado:encabezado.html.twig' %}
+    
+    
+      <table class="table table-bordered table-condensed" style="">
+        <tbody>
+        <tr class="info">
+                {#
+                <th class="col-md-0">Id</th>
+                <th class="col-md-0">Fecha de Carga</th>
+                #}
+                {% for campo in campos %}
+                    <th class="td col-sm-2">{{ campo.nombre }}</th>
+                {% endfor %}
+                <th>Acciones</th>
+        </tr>
+        {% for entity in entities %}
+                      
+            <tr>
+                {#
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.createdAt|date('d/m/Y H:i:s') }}
+                #}
+                {% for campo in campos %}
+                <td class="">{% if (datos[entity.id][campo.id]) is defined %}
+                    {{ datos[entity.id][campo.id].dato | converturls  }}
+                    {% if (datos[entity.id][campo.id].getControlEnvioEmail) %} <span title="Marcado como fecha de aviso" class="text-danger glyphicon glyphicon-asterisk"></span> {%endif%}
+                    {%endif%}
+                </td>
+                {% endfor %}
+                <td><div class="pull-right">
+                    <a href="{{ path('registro_edit_cargado', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
+                </div>
+                </td>
+            </tr>
+        
+    {% endfor %}
+
+       </tbody>
+    </table>
+
+    <ul class="record_actions">
+	    <li>
+	        <a  class="btn btn-default btn-sm"  href="{{ path('registrocargado',   {'id': registro.id} ) }}">
+	            <span class="glyphicon glyphicon-chevron-left"></span>  Volver al Listado
+	        </a>
+	    </li>
+            <li>
+                <a href="{{ path('registrocargado_exportar',   {'id': registro.id}) }}" class="pull-right btn btn-default btn-sm">
+    <span class="glyphicon glyphicon-export"></span> Exportar</a>
+            </li>
+	    
+    </ul>
+{% endblock %}

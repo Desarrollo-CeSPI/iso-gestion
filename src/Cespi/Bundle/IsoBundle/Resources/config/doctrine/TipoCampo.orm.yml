@@ -1,0 +1,26 @@
+Cespi\Bundle\IsoBundle\Entity\TipoCampo:
+    type: entity
+    table: tipo_campo
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            default: '0'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        tipo:
+            type: string
+            nullable: true
+            length: 30
+            fixed: false
+            comment: ''
+            
+    manyToMany:
+        Registro:
+         targetEntity: Registro
+         mappedBy: TipoCampo
+    lifecycleCallbacks: {  }

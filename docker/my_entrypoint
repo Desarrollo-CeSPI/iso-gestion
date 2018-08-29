@@ -1,0 +1,14 @@
+#!/bin/sh
+export TIMEZONE="America/Argentina/Buenos_Aires"
+export APACHE_RUN_USER=${APACHE_RUN_USER:-www-data}
+export APACHE_RUN_GROUP=${APACHE_RUN_GROUP:-www-data}
+export MEMORY_LIMIT=${MEMORY_LIMIT:-'512M'}
+rm /app/app/cache/prod -rf
+envsubst '${DB_NAME} ${DB_HOST} ${DB_USER} ${DB_PASSWORD} ${DB_PORT} ${DB_SECRET}  ${MAILER_HOST} ${MAILER_USER} ${MAILER_PASSWORD}' < /app/app/config/parameters.yml.dist.docker > /app/app/config/parameters.yml
+RUN SYMFONY_ENV=prod composer install
+php app/console cache:clear
+php app/console doctrine:database:create
+php app/console doctrine:database:import app/db/iso_gestion_db.sql
+chown www-data -R /app/app/cache /app/app/logs 
+a2enmod rewrite
+exec "$@"

@@ -46,3 +46,8 @@
 
 # Embedded web-server pid file
 /.web-server-pid
+
+/.envrc
+/nbproject/
+/web/.envrc
+

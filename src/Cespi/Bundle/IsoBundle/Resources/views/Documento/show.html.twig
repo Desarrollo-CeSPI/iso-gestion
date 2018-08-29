@@ -1,0 +1,217 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Documento:  {{ entity.nombre }}</h1>
+
+    <table class="record_properties records_list table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Ruta</th>
+                <td><a href="{{entity.ruta}}">{{ entity.ruta }}</a></td>
+            </tr>
+            <tr>
+                <th>Revision</th>
+                <td>{{ entity.revision }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ entity.estado }}</td>
+            </tr>
+            <tr>
+                <th>Tipo de documento</th>
+                <td>{{ entity.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Fecha aprobado</th>
+                <td>{{ entity.fechaAprobado|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <th>Fecha revisi&oacute;n</th>
+                <td>{{ entity.fechaRevision|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <th>Fecha creaci&oacute;n</th>
+                <td>{{ entity.fechaCreacion|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <th>Fecha vigencia</th>
+                <td>{{ entity.fechaVigencia|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <th>Descripci&oacute;n</th>
+                <td>{{ entity.descripcion }}</td>
+            </tr>
+            
+            
+            <tr>
+                <th>Editor</th>
+                <td>
+                  <ul>
+						{% for e in entity.editor %}
+							
+							<li>{{e}}</li>				                 
+                	{% endfor %}
+                	<ul>
+                </td>
+            </tr>
+           
+            <tr>
+                <th>Revisor</th>
+                <td>
+                  <ul>
+						{% for r in entity.revisor %}
+							
+							<li>{{r}}</li>				                 
+                	{% endfor %}
+                	<ul>
+                </td>
+            </tr>   
+
+            <tr>
+                <th>Aprobador</th>
+                <td>
+                  <ul>
+						{% for a in entity.aprobador %}
+							<li>{{a}}</li>				                 
+                	{% endfor %}
+                	<ul>
+                </td>
+            </tr>     
+            
+            <tr>
+                <th>Audiencia</th>
+                <td>
+                  <ul>
+						{% for au in entity.audiencia %}
+							<li>{{au}}</li>				                 
+                	{% endfor %}
+                	<ul>
+                </td>
+            </tr>
+
+            <tr>
+                <th>Responsable</th>
+                <td>
+                  <ul>
+						{% for r in entity.responsable %}
+							<li>{{r}}</li>				                 
+                	{% endfor %}
+                	<ul>
+                </td>
+            </tr>                            
+            
+            
+          
+            
+        </tbody>
+    </table>
+    <br>
+    <hr>
+    <br>
+    {% if logs|length > 0 %}
+    <h2>Historial de cambios</h2>
+
+    <table class="record_properties records_list table table-condensed">
+    <tbody>
+    {# Calcularlo en controlador #}
+    {% for i in logs|keys %}
+    {% if logs[ i ] != loop.last %}
+        <tr> 
+            <th class="bg-primary col-md-4">Modificado el: {{ logs[ i ].updatedAt|date('d/m/Y H:i:s')}} <small>(Por: {{logs[i].user}})</small></th>
+            <td class="bg-primary"></td>
+            </tr>
+            {% if logs[ i ].nombre != logs[ i+1 ].nombre %}
+             <tr>
+                <th>Nombre</th>
+                <td>{{ logs[ i ].nombre }}</td>
+            </tr>
+            {% endif %}    
+            {% if logs[ i ].ruta != logs[ i+1 ].ruta %}
+             <tr>
+                <th>Ruta</th>
+                <td><a href="{{logs[ i ].ruta}}">{{ logs[ i ].ruta }}</a></td>
+            </tr>
+            {% endif %}
+            {% if logs[ i ].revision != logs[ i+1 ].revision %}
+            <tr>
+                <th>Revision</th>
+                <td>{{ logs[ i ].revision }}</td>
+            </tr>
+            {% endif %}
+            {% if logs[ i ].estado != logs[ i+1 ].estado %}
+            <tr>
+                <th>Estado</th>
+                <td>{{ logs[ i ].estado }}</td>
+            </tr>
+            {% endif %}
+            {% if logs[ i ].tipo != logs[ i+1 ].tipo %}
+            <tr>
+                <th>Tipo de documento</th>
+                <td>{{ logs[ i ].tipo }}</td>
+            </tr>
+            {% endif %}
+            {% if logs[ i ].fechaAprobado|date('d/m/Y') != logs[ i+1 ].fechaAprobado|date('d/m/Y') %}
+            <tr>
+                <th>Fecha aprobado</th>
+                <td>{{ logs[ i ].fechaAprobado|date('d/m/Y') }}</td>
+            </tr>
+            {% endif %}
+            {% if logs[ i ].fechaRevision|date('d/m/Y') != logs[ i+1 ].fechaRevision|date('d/m/Y') %}
+            <tr>
+                <th>Fecha revisi&oacute;n</th>
+                <td>{{ logs[ i ].fechaRevision|date('d/m/Y') }}</td>
+            </tr>
+            {% endif %}
+            {% if logs[ i ].fechaCreacion|date('d/m/Y') != logs[ i+1 ].fechaCreacion|date('d/m/Y') %}
+            <tr>
+                <th>Fecha creaci&oacute;n</th>
+                <td>{{ logs[ i ].fechaCreacion|date('d/m/Y') }}</td>
+            </tr>
+            {% endif %}
+            {% if logs[ i ].fechaVigencia|date('d/m/Y') != logs[ i+1 ].fechaVigencia|date('d/m/Y') %}
+            <tr>
+                <th>Fecha vigencia</th>
+                <td>{{ logs[ i ].fechaVigencia|date('d/m/Y') }}</td>
+            </tr>
+            {% endif %}
+            {% if logs[ i ].descripcion != logs[ i+1 ].descripcion %}
+            <tr>
+                <th>Descripci&oacute;n</th>
+                <td>{{ logs[ i ].descripcion }}</td>
+            </tr>
+            {% endif %}
+
+{% endif %}
+{% endfor %}
+        </tbody>
+    </table>
+   
+    {% else %}
+    <h4>No hubo cambios en el documento</h4>
+    <br>
+    {% endif %}
+    
+    
+    
+        <ul class="record_actions">
+    <li>
+        <a class="btn btn-default btn-sm" href="{{ path('documento') }}">
+            <span class="glyphicon glyphicon-chevron-left"></span> Volver al listado
+        </a>
+    </li>
+    <br>
+    {% if (esEditor) %}
+    <li>
+        <a class="btn btn-default btn-sm" href="{{ path('documento_edit', { 'id': entity.id }) }}">
+            <span class="glyphicon glyphicon-pencil"></span> Modificar Documento
+        </a>
+    </li>
+    <br>
+    <li>{{ form(delete_form) }}</li>
+    {% endif %}
+</ul>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Registro</h1>
+
+    <table class="record_properties records_list table table-striped">
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Descripci&oacute;n</th>
+                <td>{{ entity.descripcion }}</td>
+            </tr>
+            <tr>
+                {#<th>Fecha de la revisión actual:</th>#}
+                <th>Fecha de actualización:</th>
+                <td>{{ entity.fechaUltimaActualizacion|date("d/m/Y")  }}</td>
+            </tr>
+            <tr>
+                <th>Revisón Actual</th>
+                <td>{{ entity.revisionActual }}</td>
+            </tr>                        
+        </tbody>
+    </table>
+
+
+    <h2>Control de cambios del registro </h2>
+
+    <table class="records_list table table-hover">
+        <thead>
+            <tr>
+                <th>Revisión</th>
+                <th>Fecha</th>
+                <th>Motivo</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cambio in cambios %}
+            <tr>
+                <td>{{ cambio.revision }}</td>
+                <td>{{ cambio.fecha | date('d/m/Y') }}</td>
+                <td>{{ cambio.motivo }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+    
+    
+    <ul class="record_actions">
+    <li>
+        <a class="btn btn-default btn-sm" href="{{ path('registro') }}">
+            <span class="glyphicon glyphicon-chevron-left"></span> Volver al listado
+        </a>
+    </li>
+    <li>
+        <a class="btn btn-default btn-sm" href="{{ path('registro_edit', { 'id': entity.id }) }}">
+            <span class="glyphicon glyphicon-pencil"></span> Modificar
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,30 @@
+estado:
+    pattern:  /
+    defaults: { _controller: "CespiIsoBundle:Estado:index" }
+
+estado_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CespiIsoBundle:Estado:show" }
+
+estado_new:
+    pattern:  /new
+    defaults: { _controller: "CespiIsoBundle:Estado:new" }
+
+estado_create:
+    pattern:  /create
+    defaults: { _controller: "CespiIsoBundle:Estado:create" }
+    requirements: { _method: post }
+
+estado_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CespiIsoBundle:Estado:edit" }
+
+estado_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CespiIsoBundle:Estado:update" }
+    requirements: { _method: post|put }
+
+estado_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CespiIsoBundle:Estado:delete" }
+    requirements: { _method: post|delete }

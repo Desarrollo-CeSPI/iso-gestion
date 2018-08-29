@@ -1,0 +1,16 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     $DB_HOST
+    database_port:     3306
+    database_name:     $DB_NAME
+    database_user:     $DB_USER
+    database_password: $DB_PASSWORD
+
+    mailer_transport:  smtp
+    mailer_host:       $MAILER_HOST
+    mailer_user:       $MAILER_USER
+    mailer_password:   $MAILER_PASSWORD
+
+    locale:            es
+    secret:       	     	$SECRET
+    app_url: 			$APP_URL

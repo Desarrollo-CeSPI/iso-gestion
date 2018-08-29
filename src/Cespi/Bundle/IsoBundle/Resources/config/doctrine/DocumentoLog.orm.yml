@@ -1,0 +1,114 @@
+Cespi\Bundle\IsoBundle\Entity\DocumentoLog:
+    type: entity
+    table: documento_log
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        user:
+            targetEntity: Usuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user:
+                    referencedColumnName: id
+            orphanRemoval: false
+        estado:
+            targetEntity: Estado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                estado:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipo:
+            targetEntity: TipoDocumento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo:
+                    referencedColumnName: id
+            orphanRemoval: false     
+            
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        ruta:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        revision:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+        #estado:
+        #    type: integer
+        #    nullable: true
+        #    unsigned: false
+        #    comment: ''
+        
+        fechaAprobado:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: fecha_aprobado
+        fechaRevision:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: fecha_revision
+        fechaCreacion:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: fecha_creacion
+        fechaVigencia:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: fecha_vigencia
+        descripcion:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        #tipo:
+        #    type: integer
+        #    nullable: true
+        #    unsigned: false
+        #    comment: ''
+        updatedAt:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+            column: updated_at
+        #user:
+        #    type: integer
+        #    nullable: false
+        #    unsigned: false
+        #    comment: ''
+        idDocumento:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: id_documento
+    lifecycleCallbacks: {  }

@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Alta de Tipo De Documento</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a class="btn btn-default btn-sm" href="{{ path('tipodocumento') }}">
+            <span class="glyphicon glyphicon-chevron-left"></span> Volver al listado
+        </a>
+    </li>
+</ul>
+{% endblock %}

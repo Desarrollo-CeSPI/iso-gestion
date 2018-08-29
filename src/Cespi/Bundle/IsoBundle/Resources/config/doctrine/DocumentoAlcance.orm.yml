@@ -1,0 +1,45 @@
+Cespi\Bundle\IsoBundle\Entity\DocumentoAlcance:
+    type: entity
+    table: documento_alcance
+    indexes:
+        documento_id:
+            columns:
+                - documento_id
+        alcance_id:
+            columns:
+                - alcance_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fecha:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+    manyToOne:
+        documento:
+            targetEntity: Documento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                documento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        alcance:
+            targetEntity: Alcances
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                alcance_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

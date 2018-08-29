@@ -1,0 +1,25 @@
+usuario:
+    pattern:  /
+    defaults: { _controller: "CespiIsoBundle:Usuario:index" }
+
+usuario_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CespiIsoBundle:Usuario:show" }
+
+usuario_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CespiIsoBundle:Usuario:edit" }
+
+usuario_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CespiIsoBundle:Usuario:update" }
+    requirements: { _method: post|put }
+    
+#usuario_editpassword:
+#    pattern:  /{id}/editpassword
+#    defaults: { _controller: "CespiIsoBundle:Usuario:editpassword" }
+    
+#usuario_updatepassword:
+#    pattern:  /{id}/updatepassword
+#    defaults: { _controller: "CespiIsoBundle:Usuario:updatepassword" }
+#    requirements: { _method: post|put }

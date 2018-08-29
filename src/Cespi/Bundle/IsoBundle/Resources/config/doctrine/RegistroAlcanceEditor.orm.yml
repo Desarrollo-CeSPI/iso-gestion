@@ -1,0 +1,45 @@
+Cespi\Bundle\IsoBundle\Entity\RegistroAlcanceEditor:
+    type: entity
+    table: registro_alcance_editor
+    indexes:
+        id_registro:
+            columns:
+                - registro_id
+        id_alcance:
+            columns:
+                - alcance_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fecha:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+    manyToOne:
+        idRegistro:
+            targetEntity: Registro
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                registro_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idAlcance:
+            targetEntity: Alcances
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                alcance_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

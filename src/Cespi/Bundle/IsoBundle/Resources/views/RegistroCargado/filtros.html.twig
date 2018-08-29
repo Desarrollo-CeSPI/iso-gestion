@@ -1,0 +1,12 @@
+      
+        {% if (filtros is defined) and (filtros is not empty) %}
+        <br /><br />   
+        <h4> Criterios de búsqueda </h4>
+        {% for filtro in filtros %}
+        <strong>{{filtro.campo}}:</strong> {{filtro.texto}} 
+        <a  class="btn btn-default btn-xs"  href="{{ path('registrocargado_borrar_filtro',   {'id': registro.id, 'id_filtro': filtro.id, 'posicion' : posicion}) }}">
+	    <span class="glyphicon glyphicon-remove"></span> Cancelar
+	</a>
+        <br>
+        {% endfor %}
+        {% endif %}

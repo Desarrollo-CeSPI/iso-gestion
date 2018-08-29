@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Gestionar control de cambios del registro  {{ registro.nombre }} </h1>
+
+    <table class="records_list table table-hover">
+        <thead>
+            <tr>
+                <th>Revisión</th>
+                <th>Fecha</th>
+                <th>Motivo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.revision }}</td>
+                <td>{{ entity.fecha | date('d/m/Y') }}</td>
+                <td>{{ entity.motivo }}</td>
+
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('registrocontrolcambios_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-zoom-in"></span>Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('registrocontrolcambios_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modificar</a></a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a class="btn btn-default btn-sm" href="{{ path('registrocontrolcambios_new', { 'idRegistro': registro.id }) }}">
+               <span class="glyphicon glyphicon-plus"></span>  Agregar cambio
+            </a>
+		
+		
+				<a class="btn btn-default btn-sm" href="{{ path('registro_edit',{ 'id': registro.id }) }}">
+               <span class="glyphicon glyphicon-arrow-left"></span> Volver a la edición del registro
+            </a>        
+	 	 </li>
+	    </ul>
+    
+    
+  
+
+    {% endblock %}

@@ -1,0 +1,103 @@
+Cespi\Bundle\IsoBundle\Entity\AclEntries:
+    type: entity
+    table: acl_entries
+    indexes:
+        IDX_46C8B806EA000B103D9AB4A6DF9183C9:
+            columns:
+                - class_id
+                - object_identity_id
+                - security_identity_id
+        IDX_46C8B806EA000B10:
+            columns:
+                - class_id
+        IDX_46C8B8063D9AB4A6:
+            columns:
+                - object_identity_id
+        IDX_46C8B806DF9183C9:
+            columns:
+                - security_identity_id
+    uniqueConstraints:
+        UNIQ_46C8B806EA000B103D9AB4A64DEF17BCE4289BF4:
+            columns:
+                - class_id
+                - object_identity_id
+                - field_name
+                - ace_order
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fieldName:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: field_name
+        aceOrder:
+            type: smallint
+            nullable: false
+            unsigned: true
+            comment: ''
+            column: ace_order
+        mask:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+        granting:
+            type: boolean
+            nullable: false
+            comment: ''
+        grantingStrategy:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            comment: ''
+            column: granting_strategy
+        auditSuccess:
+            type: boolean
+            nullable: false
+            comment: ''
+            column: audit_success
+        auditFailure:
+            type: boolean
+            nullable: false
+            comment: ''
+            column: audit_failure
+    manyToOne:
+        objectentity:
+            targetEntity: AclObjectIdentities
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                object_identity_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        securityentity:
+            targetEntity: AclSecurityIdentities
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                security_identity_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        class:
+            targetEntity: AclClasses
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                class_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

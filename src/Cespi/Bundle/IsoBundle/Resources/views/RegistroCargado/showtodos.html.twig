@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+{% include 'CespiIsoBundle:RegistroCargado:encabezado.html.twig' %}
+    {% for entity in entities %}
+    
+      <table class="table table-bordered">
+        <tbody>
+            {#
+            <tr class="info">
+                <th>Fecha de Carga</th>
+                
+                <td>{{ entity.createdAt|date('d/m/Y H:i:s') }}
+                <div class="pull-right">
+                    <a href="{{ path('registro_edit_cargado', { 'id': entity.id, 'url_back': url_back }) }}"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            #}
+       {% set counter = 1 %} 
+       {% for dato in datos[entity.id] %}
+         	<tr class="{% if counter == 1 %}info{% endif %}">
+                    <th class="col-md-2">{{ dato.idRegistroCampo.nombre }}</th>
+                <td class="col-md-6">{{ dato.dato | converturls }} {% if (dato.getControlEnvioEmail) %} <span title="Marcado como fecha de aviso" class="text-danger glyphicon glyphicon-asterisk"></span> {%endif %}
+                {% if counter == 1 %} 
+                <div class="pull-right">
+                    <a href="{{ path('registro_edit_cargado', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
+                </div>
+                {% endif %} 
+                
+                </td>
+            </tr>
+       {% set counter = counter +  1 %} 
+       {% endfor %}
+       </tbody>
+        
+    </table>
+    {% endfor %}
+</div>
+</div>
+    <div class="row"> 
+    <div class="col-md-12">
+    <ul class="record_actions">
+	    <li>
+	        <a  class="btn btn-default btn-sm"  href="{{ path('registrocargado',   {'id': registro.id} ) }}">
+	            <span class="glyphicon glyphicon-chevron-left"></span>  Volver al Listado
+	        </a>
+	    </li>
+            <li>
+                <a href="{{ path('registrocargado_exportar',   {'id': registro.id}) }}" class="pull-right btn btn-default btn-sm">
+    <span class="glyphicon glyphicon-export"></span> Exportar</a>
+            </li>
+	    
+    </ul>
+    </div>           
+    </div>           
+                
+{% endblock %}

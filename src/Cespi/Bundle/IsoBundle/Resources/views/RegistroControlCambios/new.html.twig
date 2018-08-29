@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Registrar cambio del registro  {{ registro.nombre }} </h1>
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a class="btn btn-default btn-sm"  href="{{ path('registrocontrolcambios',{ 'idRegistro': registro.id }) }}">
+            Volver al listado
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block javascripts %} 
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+ <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+ <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script>
+	/*  $(function() {
+			 $("#cespi_bundle_isobundle_registrocontrolcambios_fecha").datepicker({ dateFormat: "dd/mm/yy" }); 
+		});*/
+  </script>
+
+{% endblock %} 

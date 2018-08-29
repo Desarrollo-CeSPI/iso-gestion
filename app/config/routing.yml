@@ -1,0 +1,5 @@
+
+cespi_iso:
+    resource: "@CespiIsoBundle/Resources/config/routing.yml"
+    prefix:   /
+    schemes: [http]

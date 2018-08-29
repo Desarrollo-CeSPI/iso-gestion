@@ -1,0 +1,34 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    
+<h1>Isogestión</h1>
+<h2>Software para gestión de calidad ISO CeSPi - UNLP </h2>    
+
+
+<p>El software soporta y sustenta toda la información respaldatoria necesaria para la gestión de la norma ISO9001.
+Utilizado desde 2014, para los registros de los dos alcances certificados por CeSPI, con un esquema de perfiles, roles y permisos configurable a toda la organización.
+Actualmente 30 usuarios con distintos perfiles y con alrededor de 3000 registros.
+</p>    
+<p>La definición del formato de los registros es personalizable, permitiendo configurar textos, fechas, URLs y listas de valores
+posible en un campo. Los campos fechas permiten configurar si se reciben alertas por correo electrónico.</p>    
+
+<p>
+    La gestión de cambios de los registros se realiza a través del sistema. 
+    Permite obtener reportes en formato xls aplicando distintos filtros. Se integra con un esquema de Single Sign On o autenticación tradicional.
+</p>    
+
+<br>       
+
+{% if not is_granted("ROLE_USER") %}
+<div class="col-sm-2">
+<a href="{{ path('login') }}" class="btn btn-primary btn-block">Iniciar sesión</a>
+</div>
+{% else %}
+<h3> Bienvenido {{ app.user.nombre  }} {{ app.user.apellido }} ! </h3>
+{% endif %}
+
+
+
+{% endblock %}
+
+

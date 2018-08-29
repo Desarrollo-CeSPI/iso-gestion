@@ -1,0 +1,107 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+    <h1>Alta de un Documento</h1>
+
+    {{ form_start(form) }}
+    
+    {{ form_row(form.nombre) }}
+    {{ form_row(form.ruta) }}
+    {{ form_row(form.revision) }}
+    {{ form_row(form.fechaAprobado) }}
+    {{ form_row(form.fechaRevision) }}
+    {{ form_row(form.fechaCreacion) }}
+    {{ form_row(form.fechaVigencia) }}
+    {{ form_row(form.descripcion) }}
+    {{ form_row(form.tipo) }}
+    {{ form_row(form.estado) }}
+    
+    <div class="form-group">
+    <div class="col-sm-2 control-label">
+    {{ form_label(form.editor) }}
+    {{ form_errors(form.editor) }}
+    </div>
+    <div class="col-sm-4">
+    {{ form_widget(form.editor) }}
+    </div>
+    <div data-toggle="false" class="checkall btn btn-default "><span class="glyphicon glyphicon-check"></span> Marcar/Desmarcar todos</div>
+    </div>
+    
+    <div class="form-group">
+    <div class="col-sm-2 control-label">
+    {{ form_label(form.revisor) }}
+    {{ form_errors(form.revisor) }}
+    </div>
+    <div class="col-sm-4">
+    {{ form_widget(form.revisor) }}
+    </div>
+    <div data-toggle="false" class="checkall btn btn-default "><span class="glyphicon glyphicon-check"></span> Marcar/Desmarcar todos</div>
+    </div>
+    
+    <div class="form-group">
+    <div class="col-sm-2 control-label">
+    {{ form_label(form.aprobador) }}
+    {{ form_errors(form.aprobador) }}
+    </div>
+    <div class="col-sm-4">
+    {{ form_widget(form.aprobador) }}
+    </div>
+    <div data-toggle="false" class="checkall btn btn-default "><span class="glyphicon glyphicon-check"></span> Marcar/Desmarcar todos</div>
+    </div>
+    
+    <div class="form-group">
+    <div class="col-sm-2 control-label">
+    {{ form_label(form.audiencia) }}
+    {{ form_errors(form.audiencia) }}
+    </div>
+    <div class="col-sm-4">
+    {{ form_widget(form.audiencia) }}
+    </div>
+    <div data-toggle="false" class="checkall btn btn-default "><span class="glyphicon glyphicon-check"></span> Marcar/Desmarcar todos</div>
+    </div>
+    
+    <div class="form-group">
+    <div class="col-sm-2 control-label">
+    {{ form_label(form.responsable) }}
+    {{ form_errors(form.responsable) }}
+    </div>
+    <div class="col-sm-4">
+    {{ form_widget(form.responsable) }}
+    </div>
+    <div data-toggle="false" class="checkall btn btn-default "><span class="glyphicon glyphicon-check"></span> Marcar/Desmarcar todos</div>
+    </div>
+    
+    
+    {{ form_end(form,{'render_rest': true}) }}
+
+        <ul class="record_actions">
+    <li>
+        <a class="btn btn-default btn-sm" href="{{ path('documento') }}">
+            <span class="glyphicon glyphicon-chevron-left"></span> Volver al listado
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block javascripts %}
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+ <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+ <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script>
+  $(function() {
+      
+    $(".checkall").on("click", function() {
+            e = $(this).data("toggle");
+            $(this).closest('.form-group').find(':checkbox').prop('checked',!e); 
+            $(this).data("toggle",!e);
+    })
+       
+    $("#cespi_bundle_isobundle_documento_fechaAprobado").datepicker({ dateFormat: "dd/mm/yy" });
+    $("#cespi_bundle_isobundle_documento_fechaCreacion").datepicker({ dateFormat: "dd/mm/yy" });
+    $("#cespi_bundle_isobundle_documento_fechaVigencia").datepicker({ dateFormat: "dd/mm/yy" });
+    $("#cespi_bundle_isobundle_documento_fechaRevision").datepicker({ dateFormat: "dd/mm/yy" });    
+    
+  });
+  </script>
+{% endblock %}

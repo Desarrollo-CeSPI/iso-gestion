@@ -1,0 +1,51 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Listado de Usuarios</h1>
+
+    <table class="records_list table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Apellido</th>
+                <th>Nombre</th>
+                <th>Nrodocumento</th>
+                <th>Email</th>
+                <th>Perfil</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('usuarios_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.apellido }}</td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.nroDocumento }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.perfil }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('usuarios_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-zoom-in"> Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('usuarios_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a class="btn btn-default btn-sm" href="{{ path('usuarios_new') }}">
+                <span class="glyphicon glyphicon-user"></span> Crear Usuario
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

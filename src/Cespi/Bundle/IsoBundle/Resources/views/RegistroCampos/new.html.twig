@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Nuevo campo</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a class="btn btn-default btn-sm" href="{{ path('campos_registro', { 'idRegistro': entity.idRegistro }) }}">
+             <span class="glyphicon glyphicon-arrow-left"></span> Volver al listado
+        </a>
+    </li>
+</ul>
+{% endblock %}

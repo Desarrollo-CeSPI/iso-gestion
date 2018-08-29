@@ -1,0 +1,30 @@
+tipodocumento:
+    pattern:  /
+    defaults: { _controller: "CespiIsoBundle:TipoDocumento:index" }
+
+tipodocumento_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CespiIsoBundle:TipoDocumento:show" }
+
+tipodocumento_new:
+    pattern:  /new
+    defaults: { _controller: "CespiIsoBundle:TipoDocumento:new" }
+
+tipodocumento_create:
+    pattern:  /create
+    defaults: { _controller: "CespiIsoBundle:TipoDocumento:create" }
+    requirements: { _method: post }
+
+tipodocumento_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CespiIsoBundle:TipoDocumento:edit" }
+
+tipodocumento_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CespiIsoBundle:TipoDocumento:update" }
+    requirements: { _method: post|put }
+
+tipodocumento_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CespiIsoBundle:TipoDocumento:delete" }
+    requirements: { _method: post|delete }

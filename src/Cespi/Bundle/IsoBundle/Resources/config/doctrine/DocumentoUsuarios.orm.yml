@@ -1,0 +1,38 @@
+Cespi\Bundle\IsoBundle\Entity\DocumentoUsuarios:
+    type: entity
+    table: documento_usuarios
+    indexes:
+        id_documento:
+            columns:
+                - id_documento
+                - id_usuario
+                - id_rol
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idDocumento:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: id_documento
+        idUsuario:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: id_usuario
+        idRol:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: id_rol
+    lifecycleCallbacks: {  }

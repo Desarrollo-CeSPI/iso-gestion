@@ -1,0 +1,60 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Registros definidos en el sistema</h1>
+
+    <table class="records_list table table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripci&oacute;n</th>
+                <th>Alcances</th>
+                <th>Editores</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.descripcion }}</td>
+                <td>
+                    {%for alcance in entity.alcances%}
+                        {{ alcance.nombre }} <br>
+                    {% endfor %}
+                   
+                </td>                
+                <td>   
+                    {%for alcance in entity.alcancesEditor%}
+                         {{ alcance.nombre }} <br>
+                    {% endfor %}
+                </td>                
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('registro_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-zoom-in"></span> Ver</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('registro_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('campos_registro', { 'idRegistro': entity.id }) }}"><span class="glyphicon glyphicon-plus"></span> Agregar campos</a>
+                    </li>                    
+               
+                   
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a class="btn btn-default btn-sm" href="{{ path('registro_new') }}">
+               <span class="glyphicon glyphicon-file"></span> Crear nuevo Registro
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

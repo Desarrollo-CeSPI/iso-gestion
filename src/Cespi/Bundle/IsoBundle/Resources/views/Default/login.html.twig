@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+    <h1 class="title">Sistema de Gestión ISO</h1>
+    <h3 class="title">Bienvenido, ingrese su nombre de usuario y contraseña para comenzar a usar el sistema</h3>
+    <br />
+    
+    {% if error %}
+        <div class="error">{{ error.message }}</div>
+    {% endif %}
+
+
+{% endblock %}
+

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('bundles/cespiiso/css/style.css')}} " rel="stylesheet" media="screen">        
+        
+        <title>ISO - {% block title %} Bienvenido!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <script src="{{ asset('bundles/cespiiso/js/jquery.js')}}"></script>
+        <script src="{{ asset('bootstrap/js/bootstrap.min.js')}}"></script>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        
+         <nav class="navbar navbar-inverse" role="navigation" style="background-color: white">
+            
+             <div class ="logo_div">
+                 <a href="{{ path('cespi_iso_homepage') }}">
+                 <img src="{{ asset('bundles/cespiiso/images/logo_iso_gestion.png')}}" class ="logo_iso" >
+                 </a>
+                 
+             </div>
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="{{ path('cespi_iso_homepage') }}"></a>
+
+            </div>
+           {% if is_granted("ROLE_USER") %}   
+            <div class="navbar-collapse collapse ">
+              <ul class="nav navbar-nav">
+                <li><a href="{{ path('usuario') }}">Perfil</a></li>
+                <li class="dropdown">
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registros <b class="caret"></b></a>
+                   <ul class="dropdown-menu">
+                     {% if is_granted('ROLE_ADMIN') %}
+                       <li><a href="{{ path('registro') }}">Definir Registros</a></li>
+                     {% endif %}  
+                       <li><a href="{{ path('cargar_registros') }}">Cargar registros y listar cargados</a></li>
+                   </ul>
+                 </li>   
+                {% if is_granted("ROLE_ADMIN") %}
+                 <li class="dropdown">
+                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tablas Referencia <b class="caret"></b></a>
+                   <ul class="dropdown-menu">
+                    <!-- <li><a href="{{ path('tipodocumento') }}">Tipos de Documentos</a></li>-->
+                         <li><a href="{{ path('estado') }}">Estados</a></li>
+                         <li class="divider"></li>
+                         <li><a href="{{ path('usuarios') }}">Usuarios del sistema</a></li>
+                         <li><a href="{{ path('alcances') }}">Alcances de los usuarios</a></li>
+                         
+                   </ul>
+                 </li>
+                {% endif %}
+                
+               </ul>
+               <form method="GET" action="{{ path('registro_buscar')}}" class="navbar-form navbar-left" role="search">                     
+                 
+                 <div class="form-group">
+                   
+                     <input type="text" value="{% if (texto_buscado is defined) and (texto_buscado is not empty) %}{{texto_buscado}}{% endif%}" name="texto_buscar" class="form-control" placeholder="Buscar">
+                 </div>
+                 <button type="submit" class="btn btn-default">Enviar</button>
+                 </form>
+               </form> 
+                 {% if is_granted("ROLE_USER") %}
+                 <div class="pull-right info_usuario">
+                      Hola {{ app.user.nombre  }} {{ app.user.apellido }}
+                      {% if is_granted("ROLE_ADMIN") %}<span title="Perfil Administrador" style="color: yellow" class="glyphicon glyphicon-warning-sign"></span>{% endif %}<br>  
+                      
+                      <a class=" btn-default pull-right" href="{{ path('CespiIsoBundle_logout')}}"> Cerrar sesión <span class="glyphicon glyphicon-remove-circle"></span></a>
+
+                 </div>
+                {% endif %}    
+              </ul>
+           </div>
+          {% endif %}                        
+         </nav>
+    
+    <div class="container-fluid">
+        <section id="body" style="{#border: 1px solid #C3C3C3; border-radius: 12px; padding: 10px; margin-right:20px; background-color: #EEF8FE;
+background-image: linear-gradient(to bottom, #F0F0F0, #ffffff);#}"> 
+        
+        {% block flashs %}
+            {% if app.session.flashBag is defined %}
+                {% if app.session.flashBag.has('notice') %}
+                {% for flashMessage in app.session.flashbag.get('notice') %}
+                    <div class="alert alert-info">
+                        {{ flashMessage|escape('html')|replace({'[s]':'<strong>', '[/s]':'</strong>'})|raw }}
+                    </div>
+                {% endfor %}
+                {% endif %}
+                {% if app.session.flashBag.has('error') %}
+                {% for flashMessage in app.session.flashbag.get('error') %}
+                    <div class="alert alert-danger">
+                        <strong>¡Atención!</strong> {{ flashMessage|escape('html')|replace({'[s]':'<strong>', '[/s]':'</strong>'})|raw }}
+                    </div>
+                {% endfor %}
+                {% endif %}
+                {% if app.session.flashBag.has('success') %}
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success">
+                        {{ flashMessage|escape('html')|replace({'[s]':'<strong>', '[/s]':'</strong>'})|raw }}
+                    </div>
+                {% endfor %}
+                {% endif %}
+            {% endif %}
+        {% endblock %}
+        {% block body %} {% endblock %}
+        {% block content %}{% endblock %}        
+        {% block javascripts %}{% endblock %}
+    </section>
+   </div>
+</body>
+</html>

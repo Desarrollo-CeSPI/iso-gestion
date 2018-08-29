@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Estados de los documentos</h1>
+
+    <table class="records_list table table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.nombre }}</td>
+                <td>
+                <ul>
+                    <li>
+                    
+                    <a href="{{ path('estado_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modificar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+	<a class="btn btn-default btn-sm" href="{{ path('estado_new') }}">
+		<span class="glyphicon glyphicon-plus"></span> Crear Estado
+	</a>
+
+    {% endblock %}

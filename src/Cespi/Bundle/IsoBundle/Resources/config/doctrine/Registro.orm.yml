@@ -1,0 +1,60 @@
+Cespi\Bundle\IsoBundle\Entity\Registro:
+    type: entity
+    table: registro
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        descripcion:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        revisionActual:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: revision_actual
+        fechaUltimaActualizacion:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: fecha_ultima_actualizacion     
+    manyToMany:
+        alcances:
+          targetEntity: Alcances
+          joinTable:
+            name: registro_alcance
+            joinColumns:
+              registro_id:
+                referencedColumnName: id
+            inverseJoinColumns:
+              alcance_id:
+                referencedColumnName: id
+                unique: true    
+        alcancesEditor:
+          targetEntity: Alcances
+          joinTable:
+            name: registro_alcance_editor
+            joinColumns:
+              registro_id:
+                referencedColumnName: id
+            inverseJoinColumns:
+              alcance_id:
+                referencedColumnName: id
+                unique: true                    
+    lifecycleCallbacks: {  }

@@ -1,0 +1,7 @@
+parameters:
+#    cespi_iso.example.class: Cespi\Bundle\IsoBundle\Example
+
+services:
+#    cespi_iso.example:
+#        class: %cespi_iso.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

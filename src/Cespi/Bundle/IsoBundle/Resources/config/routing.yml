@@ -1,0 +1,63 @@
+cespi_iso_alcances:
+    resource: "@CespiIsoBundle/Resources/config/routing/alcances.yml"
+    prefix:   /alcances
+
+#cespi_iso_homepage:
+#    pattern:  /
+#    defaults: { _controller: CespiIsoBundle:Default:login }
+
+cespi_iso_homepage:
+    pattern:  /
+    defaults: { _controller: CespiIsoBundle:Default:index}
+
+login:
+    resource: "@CespiIsoBundle/Controller/SecurityController.php"
+    type:     annotation
+
+_default_login:
+    resource: "@CespiIsoBundle/Controller/DefaultController.php"
+    type:     annotation
+
+CespiIsoBundle_tipodocumento:
+    resource: "@CespiIsoBundle/Resources/config/routing/tipodocumento.yml"
+    prefix:   /backend/tipodocumento
+
+CespiIsoBundle_estado:
+        resource: "@CespiIsoBundle/Resources/config/routing/estado.yml"
+        prefix:   /backend/estado
+
+CespiIsoBundle_documento:
+        resource: "@CespiIsoBundle/Resources/config/routing/documento.yml"
+        prefix:   /documento
+
+CespiIsoBundle_usuarios:
+        resource: "@CespiIsoBundle/Resources/config/routing/usuarios.yml"
+        prefix:   /backend/usuarios        
+
+CespiIsoBundle_rol:
+        resource: "@CespiIsoBundle/Resources/config/routing/rol.yml"
+        prefix:   /backend/rol     
+        
+CespiIsoBundle_logout:
+        pattern: /logout      
+
+CespiIsoBundle_registro:
+        resource: "@CespiIsoBundle/Resources/config/routing/registro.yml"
+        prefix:   /backend/registro
+        
+CespiIsoBundle_campos_registro:
+        resource: "@CespiIsoBundle/Resources/config/routing/registrocampos.yml"
+        prefix:   /backend/campos_registro
+        
+CespiIsoBundle_registrocargado:
+        resource: "@CespiIsoBundle/Resources/config/routing/registrocargado.yml"
+        prefix:   /backend/registrocargado
+
+CespiIsoBundle_Usuario:
+    resource: "@CespiIsoBundle/Resources/config/routing/usuario.yml"
+    prefix: /usuario
+    
+CespiIsoBundle_registrocontrolcambios:
+    resource: "@CespiIsoBundle/Resources/config/routing/registrocontrolcambios.yml"
+    prefix:   /backend/registrocontrolcambios
+    

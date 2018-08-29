@@ -1,0 +1,29 @@
+registrocargado:
+    pattern:  /{id}/listar
+    defaults: { _controller: "CespiIsoBundle:RegistroCargado:index" }
+
+registrocargado_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CespiIsoBundle:RegistroCargado:show" }
+    
+registrocargado_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CespiIsoBundle:RegistroCargado:delete" }
+
+registrocargado_todos:
+    pattern:  /{id}/listartodos/{posicion}
+    defaults: { _controller: "CespiIsoBundle:RegistroCargado:showTodos",posicion: V }
+
+registrocargado_exportar:
+    pattern:  /{id}/exportar
+    defaults: { _controller: "CespiIsoBundle:RegistroCargado:ExportarRegistroCargado" }
+
+registrocargado_filtro:
+    pattern:  /{id}/filtro
+    defaults: { _controller: "CespiIsoBundle:RegistroCargado:registroCargadoFiltro" }
+
+
+registrocargado_borrar_filtro:
+    pattern: /{id}/limpiar_filtro
+    defaults: { _controller: "CespiIsoBundle:RegistroCargado:registroCargadoLimpiarFiltro" }
+

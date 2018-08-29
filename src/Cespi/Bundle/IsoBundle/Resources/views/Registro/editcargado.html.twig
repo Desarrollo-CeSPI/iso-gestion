@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+   {% if registro is defined %}
+    <h1>Editando registro del tipo: {{ registro.getNombre() }}</h1>
+   {% else %}
+     <h1>Definiendo un nuevo tipo de registro</h1>
+   {% endif %}    
+    {{ form_start(form) }}
+     
+     {#<div class="">
+    {{ form_row(form.titulo)}}
+            <hr >
+     </div>#}
+     {{ form_end(form)}}
+    {#{ form_widget(form) }#}    
+
+        <ul class="record_actions">
+    <li>
+        <a class="btn btn-default btn-sm" href="{{ url_back }}">
+            <span class="glyphicon glyphicon-chevron-left"></span> Volver al listado
+        </a>
+    </li>
+    <li>                    
+                <a class="btn btn-danger btn-sm" href="{{ path('registrocargado_delete', { 'id': registro_cargado }) }}">
+                    <span class="glyphicon glyphicon-remove-circle"></span> Borrar
+                </a>
+     </li>
+</ul>
+{% endblock %}
+
+{% block javascripts %}
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+ <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+ <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    
+    {% if campos_date is defined %}
+    {% for campo in campos_date %}
+           $("#{{campo}}").datepicker({ dateFormat: "dd/mm/yy" });
+    {% endfor %}
+    {% endif %}
+  });
+  </script>
+{% endblock %}

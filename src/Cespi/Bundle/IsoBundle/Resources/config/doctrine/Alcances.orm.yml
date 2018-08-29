@@ -1,0 +1,20 @@
+Cespi\Bundle\IsoBundle\Entity\Alcances:
+    type: entity
+    table: alcances
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

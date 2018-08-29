@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+    <h1 class="title">Sistema de Gestión ISO</h1>
+    <h3 class="title">Bienvenido, ingrese su nombre de usuario y contraseña para comenzar a usar el sistema</h3>
+ 
+{% if error %}
+   <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path('login') }}" method="post">
+          <div>
+            <label for="username">Usuario</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        </div>
+        <br />
+        <div>
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="_password" />
+        </div>
+        
+        <br />
+        
+        <button type="reset" class="btn btn-primary">
+            <span class="border-l">
+                <span class="border-r">
+                    <span class="btn-bg">Cancelar</span>
+                </span>
+            </span>
+        </button>
+        
+        <button type="submit" class="btn btn-primary">
+            <span class="border-l">
+                <span class="border-r">
+                    <span class="btn-bg">Ingresar</span>
+                </span>
+            </span>
+        
+        </button>
+
+        
+    </form>
+
+
+{% endblock %}
+

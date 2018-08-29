@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <meta charset="UTF-8" />
+        <title>ISO - {% block title %} Bienvenido!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <script src="http://code.jquery.com/jquery.js"></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+	<div class="navbar">
+    <div class="navbar-inner">
+    <a class="brand" href="#">SGC - Cespi</a>
+    <ul class="nav">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="{{ path('tipodocumentos_list') }}">Tipos de documento</a></li>
+    
+    </ul>
+    </div>
+    </div>
+        {% block content %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+	</body>
+</html>

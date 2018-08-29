@@ -1,0 +1,60 @@
+Cespi\Bundle\IsoBundle\Entity\UsuarioDocumentoRol:
+    type: entity
+    table: usuario_documento_rol
+    indexes:
+        id_persona:
+            columns:
+                - id_usuario
+                - id_rol
+                - id_documento
+        id_rol:
+            columns:
+                - id_rol
+                - id_documento
+        id_documento:
+            columns:
+                - id_documento
+        IDX_B3180C06FCF8192D:
+            columns:
+                - id_usuario
+        IDX_B3180C0690F1D76D:
+            columns:
+                - id_rol
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idUsuario:
+            targetEntity: Usuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_usuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idRol:
+            targetEntity: Rol
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_rol:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idDocumento:
+            targetEntity: Documento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_documento:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

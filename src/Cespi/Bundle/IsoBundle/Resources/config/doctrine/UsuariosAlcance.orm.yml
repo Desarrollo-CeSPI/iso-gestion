@@ -1,0 +1,49 @@
+Cespi\Bundle\IsoBundle\Entity\UsuariosAlcance:
+    type: entity
+    table: usuarios_alcance
+    indexes:
+        id_usuario:
+            columns:
+                - id_usuario
+                - id_alance
+        id_alance:
+            columns:
+                - id_alance
+        IDX_5B9EE33FFCF8192D:
+            columns:
+                - id_usuario
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fecha:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: CURRENT_TIMESTAMP
+    manyToOne:
+        idUsuario:
+            targetEntity: Usuarios
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idAlance:
+            targetEntity: Alcances
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                alcance_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,30 @@
+campos_registro:
+    pattern:  /
+    defaults: { _controller: "CespiIsoBundle:RegistroCampos:index" }
+
+campos_registro_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CespiIsoBundle:RegistroCampos:show" }
+
+campos_registro_new:
+    pattern:  /{idRegistro}/new
+    defaults: { _controller: "CespiIsoBundle:RegistroCampos:new" }
+                        
+campos_registro_create:
+    pattern:  /create
+    defaults: { _controller: "CespiIsoBundle:RegistroCampos:create" }
+    requirements: { _method: post }
+
+campos_registro_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CespiIsoBundle:RegistroCampos:edit" }
+
+campos_registro_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CespiIsoBundle:RegistroCampos:update" }
+    requirements: { _method: post|put }
+
+campos_registro_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CespiIsoBundle:RegistroCampos:delete" }
+    requirements: { _method: post|delete }

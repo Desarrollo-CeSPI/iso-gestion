@@ -1,0 +1,68 @@
+Cespi\Bundle\IsoBundle\Entity\AclObjectIdentities:
+    type: entity
+    table: acl_object_identities
+    indexes:
+        IDX_9407E54977FA751A:
+            columns:
+                - parent_object_identity_id
+    uniqueConstraints:
+        UNIQ_9407E5494B12AD6EA000B10:
+            columns:
+                - object_identifier
+                - class_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        classId:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            column: class_id
+        objectIdentifier:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            column: object_identifier
+        entriesInheriting:
+            type: boolean
+            nullable: false
+            comment: ''
+            column: entries_inheriting
+    manyToOne:
+        parentObjectentity:
+            targetEntity: AclObjectIdentities
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                parent_object_identity_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        ancestor:
+            targetEntity: AclObjectIdentities
+            cascade: {  }
+            mappedBy: null
+            inversedBy: objectentity
+            joinTable:
+                name: acl_object_identity_ancestors
+                joinColumns:
+                    -
+                        name: object_identity_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: ancestor_id
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

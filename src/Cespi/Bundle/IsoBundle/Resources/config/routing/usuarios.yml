@@ -1,0 +1,30 @@
+usuarios:
+    pattern:  /
+    defaults: { _controller: "CespiIsoBundle:Usuarios:index" }
+
+usuarios_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CespiIsoBundle:Usuarios:show" }
+
+usuarios_new:
+    pattern:  /new
+    defaults: { _controller: "CespiIsoBundle:Usuarios:new" }
+
+usuarios_create:
+    pattern:  /create
+    defaults: { _controller: "CespiIsoBundle:Usuarios:create" }
+    requirements: { _method: post }
+
+usuarios_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CespiIsoBundle:Usuarios:edit" }
+
+usuarios_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CespiIsoBundle:Usuarios:update" }
+    requirements: { _method: post|put }
+
+usuarios_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CespiIsoBundle:Usuarios:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,51 @@
+Cespi\Bundle\IsoBundle\Entity\RegistroCampos:
+    type: entity
+    table: registro_campos
+    indexes:
+        id_registro:
+            columns:
+                - id_registro
+        id_tipo_campo:
+            columns:
+                - id_tipo_campo
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        orden:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+        nombre:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+    manyToOne:
+        idTipoCampo:
+            targetEntity: TipoCampo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tipo_campo:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idRegistro:
+            targetEntity: Registro
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_registro:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

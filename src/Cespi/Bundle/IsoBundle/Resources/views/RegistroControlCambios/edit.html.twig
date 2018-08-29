@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Modificar control de cambios del registro</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a class="btn btn-default btn-sm" href="{{ path('registrocontrolcambios',{ 'idRegistro': entity.idRegistro.id }) }}">
+            <span class="glyphicon glyphicon-arrow-left"></span> Volver al listado
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

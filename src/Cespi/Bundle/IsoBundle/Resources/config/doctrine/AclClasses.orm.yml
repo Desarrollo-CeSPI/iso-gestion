@@ -1,0 +1,25 @@
+Cespi\Bundle\IsoBundle\Entity\AclClasses:
+    type: entity
+    table: acl_classes
+    uniqueConstraints:
+        UNIQ_69DD750638A36066:
+            columns:
+                - class_type
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        classType:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+            column: class_type
+    lifecycleCallbacks: {  }

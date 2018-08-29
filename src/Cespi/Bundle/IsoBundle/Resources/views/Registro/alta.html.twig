@@ -1,0 +1,54 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Carga de Registros</h1>
+    {% if (texto_buscado is defined) and (texto_buscado is not empty) %}
+       <h2>Texto buscado: <strong>{{ texto_buscado }}</strong></h2>     
+    {% endif %}    
+    <table class="records_list table table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripci&oacute;n</th>
+                <th>Alcances</th>
+                <th>Editores</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.descripcion }}</td>
+                <td>
+                    {%for alcance in entity.alcances%}
+                        {{ alcance.nombre }} <br>
+                    {% endfor %}
+                   
+                </td>                
+                <td>   
+                    {%for alcance in entity.alcancesEditor%}
+                         {{ alcance.nombre }} <br>
+                    {% endfor %}
+                </td> 
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('registrocargado_todos', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-th-list"></span> Listar todos</a>
+                    </li>   
+                    <li>
+                        <a href="{{ path('registrocargado', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-zoom-in"></span> Listar cargados</a>
+                    </li>                    
+                    <li>
+                        <a href="{{ path('registro_cargar', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-plus"></span> Cargar un registro</a>
+                    </li>                    
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+    </ul>
+    {% endblock %}

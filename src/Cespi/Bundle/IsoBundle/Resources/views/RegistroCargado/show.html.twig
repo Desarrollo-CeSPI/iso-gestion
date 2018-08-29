@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>{{entity.idRegistro.nombre}}</h1>
+
+      <table class="record_properties records_list table table-striped">
+        <tbody>
+            <tr>
+                <th>Fecha de Carga</th>
+                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+       {% for dato in datos %}
+         	<tr>
+                <th>{{ dato.idRegistroCampo.nombre }}</th>
+                <td>{{ dato.dato | converturls }}</td>
+            </tr>
+       {% endfor %}
+       </tbody>
+        
+    </table>
+
+
+
+    <ul class="record_actions">
+	    <li>
+	        <a  class="btn btn-default btn-sm"  href="{{ path('registrocargado',   {'id': entity.idRegistro.id} ) }}">
+	            <span class="glyphicon glyphicon-chevron-left"></span>  Volver al Listado
+	        </a>
+	    </li>
+	    
+	    <li>
+	        <a  class="btn btn-default btn-sm"  href="{{ path('registrocargado_show',   {'id': entity.id, 'historial' : 'si'} ) }}">
+	            <span class="glyphicon glyphicon-search"></span>  Ver historial de cambios
+	        </a>
+	    </li>
+            <li>                    
+                <a class="btn btn-danger btn-sm" href="{{ path('registrocargado_delete', { 'id': entity.id }) }}">
+                    <span class="glyphicon glyphicon-remove-circle"></span> Borrar
+                </a>
+            </li>
+            
+	    
+    </ul>
+{% endblock %}

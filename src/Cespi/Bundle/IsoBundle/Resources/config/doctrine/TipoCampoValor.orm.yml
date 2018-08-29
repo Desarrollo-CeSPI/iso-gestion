@@ -1,0 +1,36 @@
+Cespi\Bundle\IsoBundle\Entity\TipoCampoValor:
+    type: entity
+    table: tipo_campo_valor
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            default: '0'
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        valor:
+            type: integer
+            nullable: true
+            comment: ''
+        texto:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''    
+            
+    manyToOne:
+        tipoCampoId:
+            targetEntity: TipoCampoValor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipo_campo_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

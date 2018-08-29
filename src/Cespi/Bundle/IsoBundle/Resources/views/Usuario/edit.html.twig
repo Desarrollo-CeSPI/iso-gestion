@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Editar Usuario</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a class="btn btn-default btn-sm" href="{{ path('usuario') }}">
+            <span class="glyphicon glyphicon-chevron-left"></span> Volver
+        </a>
+    </li>
+    <br>
+    
+</ul>
+{% endblock %}

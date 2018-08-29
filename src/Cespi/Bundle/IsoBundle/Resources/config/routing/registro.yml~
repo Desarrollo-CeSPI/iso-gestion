@@ -1,0 +1,35 @@
+registro:
+    pattern:  /
+    defaults: { _controller: "CespiIsoBundle:Registro:index" }
+
+registro_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CespiIsoBundle:Registro:show" }
+
+registro_new:
+    pattern:  /new
+    defaults: { _controller: "CespiIsoBundle:Registro:new" }
+
+registro_create:
+    pattern:  /create
+    defaults: { _controller: "CespiIsoBundle:Registro:create" }
+    requirements: { _method: post }
+
+registro_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CespiIsoBundle:Registro:edit" }
+
+registro_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CespiIsoBundle:Registro:update" }
+    requirements: { _method: post|put }
+
+registro_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CespiIsoBundle:Registro:delete" }
+    requirements: { _method: post|delete }
+
+registro_cargar:
+    pattern:   /{id}/cargar
+    defaults: { _controller: "CespiIsoBundle:Registro:cargar" }
+    requirements: { _method: post }

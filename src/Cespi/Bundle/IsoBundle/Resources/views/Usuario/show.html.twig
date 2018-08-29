@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Usuario</h1>
+
+    <table class="record_properties table table-hover">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ entity.username }}</td>
+            </tr>
+            <tr>
+                <th>Apellido</th>
+                <td>{{ entity.apellido }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Nro de documento</th>
+                <td>{{ entity.nroDocumento }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Perfil</th>
+                <td>{{ entity.perfil }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a class="btn btn-default btn-sm"  href="{{ path('usuario') }}">
+            <span class="glyphicon glyphicon-chevron-left"></span> Volver
+        </a>
+    </li>
+    <br>
+    <li>
+        <a class="btn btn-default btn-sm" href="{{ path('usuario_edit', { 'id': entity.id }) }}">
+            <span class="glyphicon glyphicon-pencil"></span> Modificar Usuario
+        </a>
+    </li>
+    <br>
+</ul>
+{% endblock %}
