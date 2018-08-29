@@ -23,8 +23,11 @@ EL software fue desarrollado utilizando la plataforma de desarrollo Symfony 2.8,
 ## Instalación: 
 
 1) Clonar el repositorio 
-
+    SSH:
     git clone git@github.com:Desarrollo-CeSPI/iso-gestion.git
+    
+    HTTPS:
+    git clone https://github.com/Desarrollo-CeSPI/iso-gestion.git
 
 2) Ajustar parametros de configuración a la base de datos y mailer en "app/config/parameters.yml"
 
