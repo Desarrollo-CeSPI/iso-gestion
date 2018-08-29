@@ -23,20 +23,20 @@ EL software fue desarrollado utilizando la plataforma de desarrollo Symfony 2.8,
 ## Instalación: 
 
 1) Clonar el repositorio 
-    SSH:
-    git clone git@github.com:Desarrollo-CeSPI/iso-gestion.git
     
-    HTTPS:
-    git clone https://github.com/Desarrollo-CeSPI/iso-gestion.git
+    SSH: git clone git@github.com:Desarrollo-CeSPI/iso-gestion.git
+    
+    HTTPS: git clone https://github.com/Desarrollo-CeSPI/iso-gestion.git
 
-2) Ajustar parametros de configuración a la base de datos y mailer en "app/config/parameters.yml"
+2) Copiar el archivo de configuración de ejemplo con el comando: cp app/config/parameters.yml.dist app/config/parameters.yml
+
+Ajustar parametros de configuración a la base de datos y mailer en el archivo "app/config/parameters.yml"
 
 Ejemplo: 
 
 parameters:
 
     database_driver: pdo_mysql
-
     database_host: 127.0.0.1
     database_port: null
     database_name: iso_gestion_db
@@ -48,7 +48,6 @@ parameters:
     mailer_password: null
     locale: es
     secret: IsoGestionCespi2018!
-
 
 3) Ejecutar el comando composer install
 
